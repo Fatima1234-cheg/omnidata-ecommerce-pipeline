@@ -5,7 +5,7 @@ import os
 os.environ["PGCLIENTENCODING"] = "UTF8"
 # Connexion à la base
 # Remplace le 5432 par 5433
-DB_URL = "postgresql+psycopg://admin:admin123@localhost:5433/omnidata"
+DB_URL = "postgresql+psycopg://admin:admin123@host.docker.internal:5433/omnidata"
 engine = create_engine(
     DB_URL, 
     connect_args={"client_encoding": "utf8"}
