@@ -35,22 +35,22 @@ Chiffres lus sur le dashboard (module 1 filtré sur **2018**, les autres modules
 
 | Indicateur | Valeur |
 | :--- | :---: |
-| 💰 Chiffre d'affaires 2018 | **8,58 M** |
-| 🧾 Commandes 2018 | **53 K** |
-| 🛍️ Panier moyen 2018 | **160,53** |
-| ⏱️ Livraisons à l'heure | **92,27 %** |
-| 🚚 Délai moyen de livraison | **12,52 jours** |
-| ⚠️ Taux de retard global | **6,77 %** (environ 7 K commandes, retard moyen de 10,62 jours) |
-| 👥 Clients uniques | **93 K** |
-| 🔁 Clients n'ayant acheté qu'une fois | **97 %** (90,56 K) |
-| 🏆 Plus gros panier client | **13,66 K** |
-| 💳 Dépense moyenne par client | **≈ 165,20** |
+|  Chiffre d'affaires 2018 | **8,58 M** |
+|  Commandes 2018 | **53 K** |
+| Panier moyen 2018 | **160,53** |
+| ⏱Livraisons à l'heure | **92,27 %** |
+| Délai moyen de livraison | **12,52 jours** |
+| Taux de retard global | **6,77 %** (environ 7 K commandes, retard moyen de 10,62 jours) |
+| Clients uniques | **93 K** |
+| Clients n'ayant acheté qu'une fois | **97 %** (90,56 K) |
+| Plus gros panier client | **13,66 K** |
+| 💳Dépense moyenne par client | **≈ 165,20** |
 
 ---
 
 ## Le dashboard Power BI
 
-*(Ajoute tes captures dans le dossier `docs/`.)*
+
 
 ### Module 1 : Vue globale des ventes
 Chiffre d'affaires, nombre de commandes, panier moyen, taux de livraison à l'heure, répartition des commandes par statut (`delivered`, `shipped`, `invoiced`), chiffre d'affaires face aux frais de port par mois, évolution du CA et carte des ventes par État. Un filtre par année (2016, 2017, 2018) pilote toute la page.
