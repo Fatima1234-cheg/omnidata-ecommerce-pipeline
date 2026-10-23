@@ -38,13 +38,13 @@ Chiffres lus sur le dashboard (module 1 filtré sur **2018**, les autres modules
 |  Chiffre d'affaires 2018 | **8,58 M** |
 |  Commandes 2018 | **53 K** |
 | Panier moyen 2018 | **160,53** |
-| ⏱Livraisons à l'heure | **92,27 %** |
+| Livraisons à l'heure | **92,27 %** |
 | Délai moyen de livraison | **12,52 jours** |
 | Taux de retard global | **6,77 %** (environ 7 K commandes, retard moyen de 10,62 jours) |
 | Clients uniques | **93 K** |
 | Clients n'ayant acheté qu'une fois | **97 %** (90,56 K) |
 | Plus gros panier client | **13,66 K** |
-| 💳Dépense moyenne par client | **≈ 165,20** |
+| Dépense moyenne par client | **≈ 165,20** |
 
 ---
 
@@ -148,13 +148,10 @@ Le graphique de dispersion place chaque client selon ces deux axes et fait resso
 > Les noms de colonnes viennent du rapport. Les noms de tables sont indicatifs : adapte-les à ton modèle.
 
 ```DAX
-Chiffre d'Affaires = SUM ( Ventes[total_paid] )
-
-Frais de Port = SUM ( Ventes[total_freight] )
 
 Nb Commandes = DISTINCTCOUNT ( Ventes[order_id] )
 
-Panier Moyen = DIVIDE ( [Chiffre d'Affaires], [Nb Commandes] )
+Panier_Moyen = DIVIDE(SUM('public gold_sales_orders'[total_paid]), DISTINCTCOUNT('public gold_sales_orders'[order_id]))
 
 Taux_Livraison_Heure =
 DIVIDE (
@@ -166,14 +163,8 @@ Taux de Retard = 1 - [Taux_Livraison_Heure]
 
 Total Articles Vendus = SUM ( Produits[total_items_sold] )
 
-Dépense Moyenne / Client =
-DIVIDE ( SUM ( Clients[monetary] ), DISTINCTCOUNT ( Clients[customer_unique_id] ) )
+Nb_Categories_Actives = DISTINCTCOUNT('public gold_product_categories'[product_category_name_english])
 
-Part Clients 1 Achat =
-DIVIDE (
-    CALCULATE ( COUNTROWS ( Clients ), Clients[frequency] = 1 ),
-    COUNTROWS ( Clients )
-)
 ```
 
 ---
@@ -190,17 +181,16 @@ DIVIDE (
 
 ```bash
 # 1. Récupérer le projet
-git clone https://github.com/Fatima1234-cheg/<nom-du-depot>.git
-cd <nom-du-depot>
+git clone https://github.com/Fatima1234-cheg/omnidata-ecommerce-pipeline.git
+cd omnidata-ecommerce-pipeline
 
 # 2. Démarrer les services (Airflow, PostgreSQL, Spark)
 docker compose up -d
 
 # 3. Ouvrir l'interface Airflow, activer puis déclencher le DAG du projet
-#    → http://localhost:8080
+#    → http://localhost:8080 (login: airflow / mdp: airflow)
 ```
 
-> Remplace `<nom-du-depot>` par le nom réel de ton dépôt, et vérifie le port d'Airflow dans ton `docker-compose.yml`.
 
 ### Connexion à Power BI
 
