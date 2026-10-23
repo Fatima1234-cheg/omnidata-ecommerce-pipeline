@@ -19,15 +19,40 @@
 
 ## En bref
 
+
 | | |
 | :--- | :--- |
 | **Problème** | Les données e-commerce sont dispersées dans des fichiers CSV, contiennent des erreurs et ne permettent pas de piloter l'activité. |
-| **Solution** | Un pipeline automatisé par Airflow qui contrôle, nettoie et agrège les données, les charge dans PostgreSQL et les expose dans Power BI. |
-| **Volume traité** | **99 441** commandes · **93 357** clients uniques · **113K** articles vendus · **72** catégories |
+| **Solution** | Un pipeline automatisé qui contrôle, nettoie, agrège et publie les données dans un entrepôt PostgreSQL, relié à Power BI. |
+| **Volume traité** | **99 441** commandes |
 | **Qualité** | **23** commandes aux dates impossibles détectées et marquées invalides |
-| **Gold** | Plus de **97 000** commandes agrégées, pipeline complet en **~2 minutes** |
+| **Résultat** | Plus de **97 000** commandes agrégées en couche Gold, pipeline complet en **~2 minutes** |
+| **Automatisation** | Un DAG Airflow pilote tout, de l'extraction au chargement |
 
 ---
+
+## Le problème métier
+
+Une marketplace brésilienne veut savoir :
+
+1. **Combien elle vend**, et comment son chiffre d'affaires évolue dans le temps.
+2. **Où les livraisons sont lentes**, région par région, pour agir sur la satisfaction client.
+3. **Qui sont ses clients** : fidèles, occasionnels ou inactifs, afin de cibler ses actions marketing.
+
+Les données brutes ne répondent à aucune de ces questions telles quelles. Il faut d'abord s'assurer qu'elles sont fiables, puis les structurer.
+
+---
+
+## Ce que le projet livre
+
+| Livrable | Contenu |
+| :--- | :--- |
+|  **Dashboard Ventes** | Chiffre d'affaires global, évolution mensuelle, répartition par région |
+|  **Dashboard Produits** | Top catégories, volume des ventes par produit et chiffre d'affaires généré |
+|  **Dashboard Livraisons** | Délais réels contre délais promis, retards par région |
+| **Dashboard Clients (RFM)** | Segmentation par Récence, Fréquence et Montant |
+| **Pipeline automatisé** | Un DAG Airflow rejouable à chaque nouvelle livraison de données |
+| **Contrôles qualité** | Clés, doublons et cohérence des dates vérifiés avant toute transformation |
 
 ## Les résultats en un coup d'œil
 
